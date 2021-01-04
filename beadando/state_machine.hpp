@@ -7,6 +7,7 @@
 #include "van.hpp"
 #include "workmachine.hpp"
 #include <iostream>
+#include <vector>
 
 #define STORAGESIZE 100
 using namespace std;
@@ -15,6 +16,7 @@ class StateMachine
 {
 public:
     enum State {
+        ST_READ,
         ST_MAIN,
         ST_SEARCH,
         ST_LISTBYUSAGE,
@@ -26,6 +28,7 @@ public:
         ST_CAPACITY,
         ST_USAGE,
         ST_PRINT,
+        ST_WRITE,
         ST_EXIT
     };
 
@@ -34,6 +37,9 @@ public:
 
     State state() {return state_m;} // getter
 
+
+    void read_From_File();
+    void write_To_File();
     void execute();
     void print();
 private:
@@ -44,7 +50,9 @@ private:
     //Bus* storage_b_m[STORAGESIZE];
     //Van* storage_v_m[STORAGESIZE];
     //WorkMachine* storage_w_m[STORAGESIZE];
-    Vehicle* storage_m[STORAGESIZE];
+    vector<Vehicle*> storage_m;
+    //storage_m.capacity=STORAGESIZE;
+    //Vehicle* storage_m[STORAGESIZE];
     Bus v_m;
     //Vehicle v_m; //nem jó
 

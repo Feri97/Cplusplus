@@ -8,6 +8,7 @@ Vehicle::Vehicle(string lp, int y, string t): licencePlate_m(lp), manufacturingY
 Vehicle::~Vehicle() {}
 
 void Vehicle::setLicencePlate(string lp){licencePlate_m = lp;}
+int Vehicle::service_m = 0;
 /*
 ostream& operator<< (ostream& s, Vehicle v)
 {

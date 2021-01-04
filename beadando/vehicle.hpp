@@ -24,16 +24,24 @@ public:
 
     int capacity() {return capacity_m;}
     int usage() {return usage_m;}
+    virtual void setKind()=0;
 
+    virtual string getKind()=0;/*
+    static void setServiceReq();
+
+    static int getServiceReq();
+*/
     string licencePlate() {return licencePlate_m;}
     int manufacturingYear() {return manufacturingYear_m;}
     string type() {return type_m;}
 
-    virtual void print() = 0;
+    virtual void print()=0;
 
+    static int service_m;
 protected:
     int capacity_m;
     int usage_m;
+    string kind;
 private:
     string licencePlate_m;
     int manufacturingYear_m;
