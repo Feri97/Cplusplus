@@ -33,10 +33,10 @@ public:
         ST_EXIT
     };
 
-    StateMachine(): state_m(ST_MAIN), index_m(0){}
+    StateMachine(): state_m(ST_READ), index_m(0){}
     ~StateMachine();
 
-    State state() {return state_m;} // getter
+    State state() {return state_m;}
 
 
     void read_From_File();
@@ -47,21 +47,10 @@ private:
     string buffer_m;
     State state_m;
 
-
-    //Bus* storage_b_m[STORAGESIZE];
-    //Van* storage_v_m[STORAGESIZE];
-    //WorkMachine* storage_w_m[STORAGESIZE];
     vector<Vehicle*> storage_m;
-    //storage_m.capacity=STORAGESIZE;
-    //Vehicle* storage_m[STORAGESIZE];
-    Van v_m;
-    //Vehicle v_m; //nem jó
 
     int index_m;
 
-    //int index_b_m;
-    //int index_v_m;
-    //int index_w_m;
 };
 
 #endif

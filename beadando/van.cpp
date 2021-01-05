@@ -1,7 +1,7 @@
 #include "van.hpp"
 #include <iostream>
 
-Van::Van(string lp, int y, string t, int c, int u): Vehicle(lp,y,t,c,u)/*, capacity_m(c), usage_m(u)*/
+Van::Van(string lp, int y, string t, int c, int u): Vehicle(lp,y,t,c,u)
 {
         setKind();
 }
@@ -11,10 +11,3 @@ void Van::print(){
 
 }
 int Van::service_m = 0;
-/*
-ostream& operator<< (ostream& s, Van v)
-{
-    cout << v.licencePlate() << " " << v.manufacturingYear() << " " << v.type() << " Load capacity(T): " << v.capacity() << " Weekly distance(km): " << v.usage() << endl;
-    return s;
-}
-*/

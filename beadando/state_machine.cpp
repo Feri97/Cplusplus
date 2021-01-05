@@ -14,25 +14,16 @@ using namespace std;
 
 void StateMachine::execute()
 {
-    // State state_m = ST_NAMEFIRST;
 
-    //State state = ST_LICENCEPLATE;
-
-    //string buffer;
-
-
-
-//Vehicle v("asd",123,"asd");
-//Bus b();
-switch(state_m) {
-    case ST_READ:{
-        read_From_File();
-        state_m = ST_MAIN;
-        break;
-    }
+    switch(state_m) {
+        case ST_READ:{
+            read_From_File();
+            state_m = ST_MAIN;
+            break;
+        }
     case ST_MAIN:{
 
-system("CLS");
+    system("CLS");
         cout << "[1] Add Vehicle" << endl;
         cout << "[2] List Vehicles" << endl;
         cout << "[3] Search Vehicle" << endl;
@@ -129,7 +120,7 @@ system("CLS");
     case ST_SERVICEBOUNDARY:{
 
     system("CLS");
-    cout << endl << "Set service requirement boundary for: ";
+    cout << "Set service requirement boundary for: " << endl;
         cout << "[1] Van" << endl;
         cout << "[2] Bus" << endl;
         cout << "[3] Work machine" << endl;
@@ -139,21 +130,21 @@ system("CLS");
             if(s == '1'){
         cout << endl << "Van: ";
             cin >> buffer_m;
-                Van::service_m = atoi(buffer_m.c_str());
+                Van::setServiceReq(buffer_m);
                 state_m = ST_SERVICEBOUNDARY;
                 break;
             }
             else if(s == '2'){
         cout << endl << "Bus: ";
             cin >> buffer_m;
-                Bus::service_m = atoi(buffer_m.c_str());
+                Bus::setServiceReq(buffer_m);;
                 state_m = ST_SERVICEBOUNDARY;
                 break;
             }
             else if(s == '3'){
         cout << endl << "Work machine: ";
             cin >> buffer_m;
-                WorkMachine::service_m = atoi(buffer_m.c_str());
+                WorkMachine::setServiceReq(buffer_m);;
                 state_m = ST_SERVICEBOUNDARY;
                 break;
             }
@@ -167,11 +158,23 @@ system("CLS");
             }
     }
     case ST_LISTSERVICEREQ:{
-    system("CLS");
+        system("CLS");
         cout << "Service required: " << endl;
         for (int i = 0; i < storage_m.size(); i++) {
-            if(storage_m.at(i)->service_m < storage_m.at(i)->usage()){
-                storage_m.at(i)->print();
+            if(storage_m.at(i)->getKind()=="Van"){
+                if(((Van*)storage_m.at(i))->getServiceReq() < storage_m.at(i)->usage()){
+                    storage_m.at(i)->print();
+                }
+            }
+            if(storage_m.at(i)->getKind()=="Bus"){
+                if(((Bus*)storage_m.at(i))->getServiceReq() < storage_m.at(i)->usage()){
+                    storage_m.at(i)->print();
+                }
+            }
+            if(storage_m.at(i)->getKind()=="WorkMachine"){
+                if(((WorkMachine*)storage_m.at(i))->getServiceReq() < storage_m.at(i)->usage()){
+                    storage_m.at(i)->print();
+                }
             }
         }
         cout << "[1] Set Boundary" << endl;
@@ -200,23 +203,13 @@ system("CLS");
     cin >> v;
     switch(v) {
     case 'b':{
-        Bus v_m;
-        //storage_m.push_back(new Bus);
-        //storage_m.insert(v_m);
         storage_m.push_back(new Bus);
-        //storage_m.push_back(&v_m);
         break;}
     case 'v':{
-        Van v_m;
-        //storage_m.insert(new Van);
         storage_m.push_back(new Van);
-        //storage_m.push_back(&v_m);
         break;}
     case 'w':{
-        WorkMachine v_m;
-        //storage_m.insert(new WorkMachine);
         storage_m.push_back(new WorkMachine);
-        //storage_m.push_back(&v_m);
         break;}
     default:{
         cout << endl << "Wrong type";
@@ -228,7 +221,7 @@ system("CLS");
             if (buffer_m[0] == '<')
                 state_m = ST_LICENCEPLATE;
             else {
-                v_m.setLicencePlate(buffer_m);
+                storage_m.at(index_m)->setLicencePlate(buffer_m);
                 state_m = ST_TYPE;
             }
             break;
@@ -239,7 +232,7 @@ system("CLS");
             if (buffer_m[0] == '<')
                 state_m = ST_LICENCEPLATE;
             else {
-                v_m.setType(buffer_m);
+                storage_m.at(index_m)->setType(buffer_m);
                 state_m = ST_YEAR;
             }
             break;
@@ -249,7 +242,7 @@ system("CLS");
             if (buffer_m[0] == '<')
                 state_m = ST_TYPE;
             else {
-                v_m.setYearOfManufacturing(buffer_m);
+                storage_m.at(index_m)->setYearOfManufacturing(buffer_m);
                 state_m = ST_CAPACITY;
             }
             break;
@@ -259,7 +252,7 @@ system("CLS");
             if (buffer_m[0] == '<')
                 state_m = ST_YEAR;
             else {
-                v_m.setCapacity(buffer_m);
+                storage_m.at(index_m)->setCapacity(buffer_m);
                 state_m = ST_USAGE;
             }
             break;
@@ -269,30 +262,17 @@ system("CLS");
             if (buffer_m[0] == '<')
                 state_m = ST_CAPACITY;
             else {
-                v_m.setUsage(buffer_m);
+                storage_m.at(index_m)->setUsage(buffer_m);
                 state_m = ST_PRINT;
             }
             break;
         case ST_PRINT:
 
             system("CLS");
-            /*
-            *******************************************************************
 
-            Nem megy a m b cjsdac kjkdc meg kell oldaani!!!!  - Hazudta: Feri
-
-
-            */
-            //storage_m.push_back(&v_m);
-
-            //for(int i = 0; i < storage_m.size(); i++){
-            //*(storage_m.at(index_m)) = v_m;
-            storage_m.at(index_m) = &v_m;
             storage_m.at(index_m)->print();
-            //}
             ++index_m;
-            v_m.print();
-            cout << v_m.getKind() << endl;
+
             cout << "Next vehicle: n, Correct: <, Exit: x" << endl;
             char c;
             cin >> c;
@@ -313,6 +293,7 @@ system("CLS");
         case ST_LIST:
 
             system("CLS");
+
             print();
 
             cout << "Next vehicle: n, Back: b" << endl;
@@ -339,13 +320,9 @@ system("CLS");
             break;
         }
 
-    //enofcase
+
     }
 
-
-
-
-    //enofcase
 
 void StateMachine::read_From_File(){
 
@@ -376,20 +353,17 @@ void StateMachine::read_From_File(){
         int tmpCapacity = stoi(input.at(i).at(3));
         int tmpUsage = stoi(input.at(i).at(4));
 
-        Vehicle* vehicle;
-
-        if(input.at(i).at(5) == "WorkMachine")
-        //WorkMachine v(tmpLicencePlate, tmpProductionYear, tmpType, tmpCapacity, tmpUsage);
-            vehicle = new WorkMachine(tmpLicencePlate, tmpProductionYear, tmpType, tmpCapacity, tmpUsage);
-        if(input.at(i).at(5) == "Van")
-        //Van v(tmpLicencePlate, tmpProductionYear, tmpType, tmpCapacity, tmpUsage);
-            vehicle = new Van(tmpLicencePlate, tmpProductionYear, tmpType, tmpCapacity, tmpUsage);
-        if(input.at(i).at(5) == "Bus")
-        //Bus v(tmpLicencePlate, tmpProductionYear, tmpType, tmpCapacity, tmpUsage);
-            vehicle = new Bus(tmpLicencePlate, tmpProductionYear, tmpType, tmpCapacity, tmpUsage);
-
-        storage_m.push_back(vehicle);
+        if(input.at(i).at(5) == "WorkMachine"){
+            storage_m.push_back(new WorkMachine(tmpLicencePlate, tmpProductionYear, tmpType, tmpCapacity, tmpUsage));
+        }
+        if(input.at(i).at(5) == "Van"){
+            storage_m.push_back(new Van(tmpLicencePlate, tmpProductionYear, tmpType, tmpCapacity, tmpUsage));
+        }
+        if(input.at(i).at(5) == "Bus"){
+            storage_m.push_back(new Bus(tmpLicencePlate, tmpProductionYear, tmpType, tmpCapacity, tmpUsage));
+        }
     }
+    index_m = storage_m.size();
 }
 
 void StateMachine::write_To_File(){
@@ -410,18 +384,11 @@ void StateMachine::write_To_File(){
 void StateMachine::print()
 {
     for(int i = 0; i < storage_m.size(); ++i) {
-        //cout << *storage_m[i];
-        //*storage_m.at(i)->print();
-        storage_m[i]->print();
+        storage_m.at(i)->print();
     }
 }
 
 StateMachine::~StateMachine()
 {
     storage_m.clear();
-    /*
-    for(int i = 0; i < storage_m.size(); ++i) {
-        delete storage_m.at(i);
-    }
-    */
 }

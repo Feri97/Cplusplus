@@ -5,33 +5,28 @@
 class WorkMachine: public Vehicle
 {
 public:
-    WorkMachine(string lp, int y, string t, int c, int u)/*: Vehicle(lp, y, t), capacity_m(c), usage_m(u) {}*/;
+    WorkMachine(string lp, int y, string t, int c, int u);
     WorkMachine() {
         setKind();
     }
-    void setCapacity(string c) {capacity_m = atoi(c.c_str());}
-    void setUsage(string u) {usage_m = atoi(u.c_str());}
 
-    int capacity() {return capacity_m;}
-    int usage() {return usage_m;}
     void setKind() {kind = "WorkMachine";}
 
     string getKind(){return kind;}
-/*
+
     static void setServiceReq(string s){
         service_m = atoi(s.c_str());
-    };
+    }
 
     static int getServiceReq(){
         return service_m;
-    };
-*/
+    }
+
     void print();
     static int service_m;
-private:
+
+//private:
     string kind;
-    int capacity_m;
-    int usage_m;
 };
 
 #endif // _WORKMACHINE_HPP_
