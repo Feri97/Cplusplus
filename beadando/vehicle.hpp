@@ -11,7 +11,8 @@ using namespace std;
 class Vehicle
 {
 public:
-    Vehicle(string lp, int y, string t);
+    //Vehicle(string lp, int y, string t);
+    Vehicle(string lp, int y, string t, int c, int u);
     Vehicle() {}
     ~Vehicle();
 

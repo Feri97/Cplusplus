@@ -1,7 +1,7 @@
 #include "bus.hpp"
 #include <iostream>
 
-Bus::Bus(string lp, int y, string t, int c, int u): Vehicle(lp,y,t), capacity_m(c), usage_m(u)
+Bus::Bus(string lp, int y, string t, int c, int u): Vehicle(lp,y,t,c,u)/*, capacity_m(c), usage_m(u)*/
 {
         setKind();
 }

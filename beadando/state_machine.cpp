@@ -45,7 +45,7 @@ system("CLS");
             if (buffer_m[0] == '1')
                 state_m = ST_LICENCEPLATE;
             else if(buffer_m[0] == '2'){
-                state_m = ST_PRINT;
+                state_m = ST_LIST;
             }
             else if(buffer_m[0] == '3'){
                 state_m = ST_SEARCH;
@@ -200,14 +200,23 @@ system("CLS");
     cin >> v;
     switch(v) {
     case 'b':{
-        Bus v_m();
+        Bus v_m;
+        //storage_m.push_back(new Bus);
+        //storage_m.insert(v_m);
+        storage_m.push_back(new Bus);
+        //storage_m.push_back(&v_m);
         break;}
     case 'v':{
-        Van v_m();
+        Van v_m;
+        //storage_m.insert(new Van);
+        storage_m.push_back(new Van);
+        //storage_m.push_back(&v_m);
         break;}
     case 'w':{
-        WorkMachine v_m();
-        //storage_m.push_back(new WorkMachine);
+        WorkMachine v_m;
+        //storage_m.insert(new WorkMachine);
+        storage_m.push_back(new WorkMachine);
+        //storage_m.push_back(&v_m);
         break;}
     default:{
         cout << endl << "Wrong type";
@@ -266,26 +275,24 @@ system("CLS");
             break;
         case ST_PRINT:
 
+            system("CLS");
             /*
             *******************************************************************
 
             Nem megy a m b cjsdac kjkdc meg kell oldaani!!!!  - Hazudta: Feri
-            //storage_m.push_back(v_m);
 
 
-            *******************************************************************
             */
+            //storage_m.push_back(&v_m);
 
+            //for(int i = 0; i < storage_m.size(); i++){
+            //*(storage_m.at(index_m)) = v_m;
+            storage_m.at(index_m) = &v_m;
+            storage_m.at(index_m)->print();
+            //}
             ++index_m;
-            system("CLS");
-            print();
-            /*
-            for(int i = 0; i < storage_m.size(); i++){
-
-            }
-            *(storage_m.at(index_m)) = v_m;
-            */
-
+            v_m.print();
+            cout << v_m.getKind() << endl;
             cout << "Next vehicle: n, Correct: <, Exit: x" << endl;
             char c;
             cin >> c;
@@ -298,6 +305,23 @@ system("CLS");
                 state_m = ST_USAGE;
                 break;
             case 'x':
+                state_m = ST_MAIN;
+                break;
+            }
+
+            break;
+        case ST_LIST:
+
+            system("CLS");
+            print();
+
+            cout << "Next vehicle: n, Back: b" << endl;
+            cin >> c;
+            switch(c) {
+            case 'n':
+                state_m = ST_LICENCEPLATE;
+                break;
+            case 'b':
                 state_m = ST_MAIN;
                 break;
             }
@@ -387,7 +411,8 @@ void StateMachine::print()
 {
     for(int i = 0; i < storage_m.size(); ++i) {
         //cout << *storage_m[i];
-        storage_m.at(i)->print();
+        //*storage_m.at(i)->print();
+        storage_m[i]->print();
     }
 }
 

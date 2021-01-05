@@ -1,8 +1,10 @@
 #include "workmachine.hpp"
 #include <iostream>
 
-WorkMachine::WorkMachine(string lp, int y, string t, int c, int u): Vehicle(lp,y,t), capacity_m(c), usage_m(u) {
-        setKind();}
+WorkMachine::WorkMachine(string lp, int y, string t, int c, int u): Vehicle(lp,y,t,c,u)/*, capacity_m(c), usage_m(u)*/
+{
+        setKind();
+}
 
 void WorkMachine::print(){
     cout << this->licencePlate() << " " << this->manufacturingYear() << " " << this->type() << " Performance(KW): " << this->capacity() << " Weekly work(h): " << this->usage() << endl;

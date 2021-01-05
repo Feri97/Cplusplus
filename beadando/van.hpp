@@ -8,9 +8,11 @@ public:
     Van() {
         setKind();
     }
-    void setCapacity(string c) {capacity_m = stoi(c);}
-    void setUsage(string u) {usage_m = stoi(u);}
+    void setCapacity(string c) {capacity_m = atoi(c.c_str());}
+    void setUsage(string u) {usage_m = atoi(u.c_str());}
 
+    int capacity() {return capacity_m;}
+    int usage() {return usage_m;}
     void setKind() {kind = "Van";}
 
     string getKind(){return kind;}/*

@@ -12,7 +12,9 @@ public:
     void setUsage(string u) {usage_m = atoi(u.c_str());}
     void setKind() {kind = "Bus";}
 
-    string getKind(){return kind;}/*
+    string getKind(){return kind;}
+    int capacity() {return capacity_m;}
+    int usage() {return usage_m;}/*
     static void setServiceReq(string s){
         service_m = atoi(s.c_str());
     }

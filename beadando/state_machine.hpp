@@ -28,6 +28,7 @@ public:
         ST_CAPACITY,
         ST_USAGE,
         ST_PRINT,
+        ST_LIST,
         ST_WRITE,
         ST_EXIT
     };
@@ -53,7 +54,7 @@ private:
     vector<Vehicle*> storage_m;
     //storage_m.capacity=STORAGESIZE;
     //Vehicle* storage_m[STORAGESIZE];
-    Bus v_m;
+    Van v_m;
     //Vehicle v_m; //nem jó
 
     int index_m;
