@@ -6,27 +6,21 @@ class WorkMachine: public Vehicle
 {
 public:
     WorkMachine(string lp, int y, string t, int c, int u);
-    WorkMachine() {
-        setKind();
-    }
+    WorkMachine();
 
-    void setKind() {kind = "WorkMachine";}
+    void setVehicleType();
 
-    string getKind(){return kind;}
+    string getVehicleType();
 
-    static void setServiceReq(string s){
-        service_m = atoi(s.c_str());
-    }
+    static void setServiceReq(string s);
 
-    static int getServiceReq(){
-        return service_m;
-    }
+    static int getServiceReq();
 
     void print();
     static int service_m;
 
-//private:
-    string kind;
+private:
+    string vType;
 };
 
-#endif // _WORKMACHINE_HPP_
+#endif

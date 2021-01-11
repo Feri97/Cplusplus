@@ -5,27 +5,21 @@ class Van: public Vehicle
 {
 public:
     Van(string lp, int y, string t, int c, int u);
-    Van() {
-        setKind();
-    }
-    void setKind() {kind = "Van";}
+    Van();
+    void setVehicleType();
 
-    string getKind(){return kind;}
+    string getVehicleType();
 
-    static void setServiceReq(string s){
-        service_m = atoi(s.c_str());
-    }
+    static void setServiceReq(string s);
 
-    static int getServiceReq(){
-        return service_m;
-    }
+    static int getServiceReq();
 
 
 
     void print();
     static int service_m;
-//private:
+private:
 
-    string kind;
+    string vType;
 };
 #endif

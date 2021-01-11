@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1609768698 source:c:\users\feri\documents\beadando\main.cpp
+1610279407 source:c:\users\feri\documents\beadando\main.cpp
 	<iostream>
 	<stdlib.h>
 	<string>
@@ -9,16 +9,16 @@
 	"workmachine.hpp"
 	"state_machine.hpp"
 
-1609868659 c:\users\feri\documents\beadando\vehicle.hpp
+1610358950 c:\users\feri\documents\beadando\vehicle.hpp
 	<string>
 	<stdlib.h>
 	<iostream>
 
-1609868011 source:c:\users\feri\documents\beadando\vehicle.cpp
+1610358974 source:c:\users\feri\documents\beadando\vehicle.cpp
 	"vehicle.hpp"
 	<iostream>
 
-1609867502 c:\users\feri\documents\beadando\state_machine.hpp
+1610279154 c:\users\feri\documents\beadando\state_machine.hpp
 	<string>
 	"vehicle.hpp"
 	"bus.hpp"
@@ -27,7 +27,7 @@
 	<iostream>
 	<vector>
 
-1609870751 source:c:\users\feri\documents\beadando\state_machine.cpp
+1610359363 source:c:\users\feri\documents\beadando\state_machine.cpp
 	"state_machine.hpp"
 	"vehicle.hpp"
 	"bus.hpp"
@@ -39,24 +39,24 @@
 	<vector>
 	<sstream>
 
-1609868372 c:\users\feri\documents\beadando\bus.hpp
+1610358718 c:\users\feri\documents\beadando\bus.hpp
 	"vehicle.hpp"
 
-1609868372 c:\users\feri\documents\beadando\van.hpp
+1610358649 c:\users\feri\documents\beadando\van.hpp
 	"vehicle.hpp"
 
-1609868200 c:\users\feri\documents\beadando\workmachine.hpp
+1610358780 c:\users\feri\documents\beadando\workmachine.hpp
 	"vehicle.hpp"
 
-1609867995 source:c:\users\feri\documents\beadando\bus.cpp
+1610358701 source:c:\users\feri\documents\beadando\bus.cpp
 	"bus.hpp"
 	<iostream>
 
-1609867995 source:c:\users\feri\documents\beadando\van.cpp
+1610358639 source:c:\users\feri\documents\beadando\van.cpp
 	"van.hpp"
 	<iostream>
 
-1609867995 source:c:\users\feri\documents\beadando\workmachine.cpp
+1610358774 source:c:\users\feri\documents\beadando\workmachine.cpp
 	"workmachine.hpp"
 	<iostream>
 

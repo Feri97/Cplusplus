@@ -18,17 +18,12 @@ public:
     enum State {
         ST_READ,
         ST_MAIN,
+        ST_ADD,
+        ST_LIST,
         ST_SEARCH,
         ST_LISTBYUSAGE,
-        ST_SERVICEBOUNDARY,
+        ST_SERVICELIMIT,
         ST_LISTSERVICEREQ,
-        ST_LICENCEPLATE,
-        ST_YEAR,
-        ST_TYPE,
-        ST_CAPACITY,
-        ST_USAGE,
-        ST_PRINT,
-        ST_LIST,
         ST_WRITE,
         ST_EXIT
     };
@@ -39,16 +34,17 @@ public:
     State state() {return state_m;}
 
 
-    void read_From_File();
-    void write_To_File();
+    void FileRead();
+    void FileWrite();
     void execute();
-    void print();
+    void List();
 private:
     string buffer_m;
     State state_m;
 
-    vector<Vehicle*> storage_m;
+    vector<Vehicle*> vehicles_m;
 
+    char input_m;
     int index_m;
 
 };
